@@ -15,6 +15,21 @@ router.get("/", async (req, res) => {
       .find({ email: req.query.email, password: req.query.password })
       .toArray();
 
+    if (collection.length === 0) {
+      const db = client.db("Quotadata");
+      const collection = await db.collection("users").insertOne({
+        name: req.query.name,
+        username: req.query.username,
+        email: req.query.email,
+        password: req.query.password,
+        profilepic: req.query.profilepic,
+      });
+      res.json({
+        status: 200,
+        message: "Set data has successfully",
+        data: collection,
+      });
+    }
     res.json({
       status: 200,
       message: "Get data has successfully",
