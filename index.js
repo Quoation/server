@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+var cors = require("cors");
 const product = require("./api/product");
 const randomquote = require("./api/randomquote");
 const get10quotes = require("./api/get10quotes");
@@ -8,7 +9,7 @@ const login = require("./api/login");
 const register = require("./api/register");
 // const like = require("./api/like");
 
-app.use(express.json({ extended: false }));
+app.use(cors());
 
 app.use("/api/product", product);
 app.use("/api/randomquote", randomquote);
