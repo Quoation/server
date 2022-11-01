@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
     res.json({
       status: 200,
       message: "Get data has successfully",
-      data: collection,
+      data: collection[0],
     });
   } catch (error) {
     console.error(error);
