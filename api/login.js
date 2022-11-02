@@ -30,13 +30,14 @@ router.get("/", async (req, res) => {
         data: collection,
         type: "register",
       });
+    } else {
+      res.json({
+        status: 200,
+        message: "Get data has successfully",
+        data: collection[0],
+        type: "login",
+      });
     }
-    res.json({
-      status: 200,
-      message: "Get data has successfully",
-      data: collection[0],
-      type: "login",
-    });
   } catch (error) {
     console.error(error);
     return res.status(500).send("Server error");
