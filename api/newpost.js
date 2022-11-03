@@ -13,6 +13,7 @@ router.get("/", async (req, res) => {
     const collection = await db.collection("quotadata").insertOne({
       quote: req.query.quote,
       author: req.query.author,
+      email: req.query.email,
       like: 0,
     });
 
